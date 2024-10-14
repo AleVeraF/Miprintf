@@ -14,8 +14,8 @@
 
 int	ft_putchar_fd(char c)
 {
-		write (1, &c, 1);
-		return (1);
+	write (1, &c, 1);
+	return (1);
 }
 
 int	handle_s(va_list args)
@@ -56,43 +56,31 @@ int	handle_d_i(va_list args)
 	return (len);
 }
 
-int	handle_x_p(va_list args, char a)
+int	handle_p(va_list args)
 {
-	void			*ptr;
-	unsigned int	num;
-	int	len;
+	void	*ptr;
+	int		len;
 
 	len = 0;
-	if (a == 'p')
+	ptr = va_arg(args, void *);
+	if (!ptr)
 	{
-		ptr = va_arg(args, void *);
-		if (!ptr)
-		{
-			ft_putstr_fd("(nil)", 1);
-			return(5);
-		}
-		else
-		{
-			ft_putstr_fd("0x", 1);
-			len += 2;
-			len += ft_putnbr_base((unsigned long)ptr, "0123456789abcdef");
-		}
+		ft_putstr_fd("(nil)", 1);
+		return (5);
 	}
-	else if (a == 'x' || a == 'X')
+	else
 	{
-		num = va_arg(args, unsigned int);
-		if (a == 'x')
-			len += ft_putnbr_base(num, "0123456789abcdef");
-		else
-			len += ft_putnbr_base(num, "0123456789ABCDEF");
+		ft_putstr_fd("0x", 1);
+		len += 2;
+		len += ft_putnbr_base((unsigned long)ptr, "0123456789abcdef");
 	}
 	return (len);
 }
 
 int	handle_format(char const format, va_list args)
 {
-	int c;
-	int printed_chars;
+	int	c;
+	int	printed_chars;
 
 	printed_chars = 0;
 	if (format == 'd' || format == 'i')
@@ -106,11 +94,11 @@ int	handle_format(char const format, va_list args)
 		c = va_arg(args, int);
 		printed_chars += ft_putchar_fd(c);
 	}
-	else if (format == 'p' || format == 'x' || format == 'X')
-		printed_chars += handle_x_p(args, format);
+	else if (format == 'p')
+		printed_chars += handle_p(args);
+	else if (format == 'x' || format == 'X')
+		printed_chars += handle_x(args, format);
 	else if (format == '%')
-	{
 		printed_chars += ft_putchar_fd('%');
-	}
 	return (printed_chars);
 }

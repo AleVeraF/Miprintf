@@ -1,5 +1,5 @@
-SRC = aux_handle_s.c \
-	  aux_handle_u.c \
+SRC = aux_handle_two.c \
+	  aux_handle_one.c \
 	  ft_printf.c \
 
 NAME = libftprintf.a

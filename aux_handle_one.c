@@ -24,11 +24,10 @@ int	ft_putnbr_u(unsigned int n, int fd)
 	return (i);
 }
 
-
 int	handle_u(va_list args)
 {
 	unsigned int	num;
-	int	len;
+	int				len;
 	unsigned int	temp;
 
 	num = va_arg(args, unsigned int);
@@ -42,5 +41,19 @@ int	handle_u(va_list args)
 		len++;
 	}
 	ft_putnbr_u(num, 1);
+	return (len);
+}
+
+int	handle_x(va_list args, char a)
+{
+	unsigned int	num;
+	int				len;
+
+	len = 0;
+	num = va_arg(args, unsigned int);
+	if (a == 'x')
+		len += ft_putnbr_base(num, "0123456789abcdef");
+	else if (a == 'X')
+		len += ft_putnbr_base(num, "0123456789ABCDEF");
 	return (len);
 }

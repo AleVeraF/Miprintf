@@ -76,7 +76,7 @@ int	ft_printf(char const *format, ...)
 {
 	va_list	args;
 	size_t	len;
-	int	i;
+	int		i;
 
 	i = 0;
 	len = 0;
@@ -95,3 +95,46 @@ int	ft_printf(char const *format, ...)
 	va_end(args);
 	return (len);
 }
+
+/*int main() {
+    char *str = "NULL";
+    int number = 42;
+    unsigned int unsigned_number = 12345;
+	int *ptr = &number;
+	int *ptr2 = NULL;
+    // Uso de ft_printf
+    ft_printf("Prueba de ft_printf:\n");
+    ft_printf("Cadena: %s\n", str);
+    ft_printf("Número: %d\n", number);
+    ft_printf("Número sin signo: %u\n", unsigned_number);
+    ft_printf("Caracter: %c\n", 'A');
+    ft_printf("Porcentaje: %%\n");
+	ft_printf("Hexadecimal minuscula %x\n", 59);
+	ft_printf("Hexadecimal mayuscula %X\n", 78);
+	ft_printf("%X\n", -78);
+	ft_printf("Puntero %p\n", ptr );
+	ft_printf("Puntero %p\n",ptr2 );
+    // Uso de printf para comparación
+    printf("\nPrueba de printf:\n");
+    printf("Cadena: %s\n", str);
+    printf("Número: %d\n", number);
+    printf("Número sin signo: %u\n", unsigned_number);
+    printf("Caracter: %c\n", 'A');
+    printf("Porcentaje: %%\n");
+	printf("Hexadecimal minuscula %x\n", 59);
+	printf("Hexadecimal mayuscula %X\n", 78 );
+	printf("%X\n", -78);
+	printf("Puntero %p\n", ptr );
+	printf("Puntero %p\n",ptr2 );
+    return 0;
+}*/
+
+
+
+
+
+
+
+
+
+
